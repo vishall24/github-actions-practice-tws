@@ -13,3 +13,18 @@ jobs:
 
       - name: Say Hello
         run: echo "Hello from Github Actions Runner"
+
+      - name: Show Date
+        run: date
+
+      - name: check who are you in runner
+        run: whoami
+
+      - name: show current branch
+        run: echo "Branch: ${{ github.ref_name }}"
+
+      - name: List files
+        run: ls -la
+
+      - name: Show OS
+        run: uname -a
