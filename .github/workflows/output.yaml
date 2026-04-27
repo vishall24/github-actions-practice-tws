@@ -1,0 +1,24 @@
+name: Job outputs
+
+on: push
+
+jobs:
+    job_1:
+        runs-on: ubuntu-latest
+        outputs:
+            today: ${{ steps.set-data.outputs.data}}
+
+        steps:
+            - name: Set data
+              id: set-data
+              run: |
+                echo "data=$(date)" >> $GITHUB_OUTPUT
+
+
+    job_2:
+        runs-on: ubuntu-latest
+        needs: job_1
+
+        steps:
+            - name: Read Output
+              run: echo "Date is ${{ needs.job_1.outputs.today}}"
