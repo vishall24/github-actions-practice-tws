@@ -39,3 +39,24 @@ jobs:
 
       - name: Read file content
         run: cat file.txt
+
+  test:
+        runs-on: ubuntu-latest
+        
+        steps:
+            
+            - name: Check out code
+              uses: actions/checkout@v4
+            
+            - name: Cache dependencies
+              uses: actions/cache@v4
+              with:
+                 path: ~/.cache
+                 key: my-cache-${{ runner.os }}
+
+            - name: Install Python
+              run: sudo apt update && sudo apt install -y python3
+            
+            - name: Run script
+              run: |
+                python3 test.py
