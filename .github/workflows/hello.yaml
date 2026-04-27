@@ -36,3 +36,7 @@ jobs:
 
       - name: Show OS
         run: uname -a
+
+      - name: Print inputs
+        run: |
+          echo "Environment is ${{ github.event.inputs.environment }}"
