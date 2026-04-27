@@ -20,6 +20,10 @@ jobs:
               if: failure()
               run: echo "Previous step failed....."
 
+            - name: Continue even if error
+              run: exit 1
+              continue-on-error: true
+
     only-push-job:
         if: github.event_name == 'push'
         runs-on: ubuntu-latest
