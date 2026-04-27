@@ -7,7 +7,7 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Linting code
+      - run: echo "Linting code"
         
   test:
     runs-on: ubuntu-latest
