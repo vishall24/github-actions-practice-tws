@@ -15,6 +15,13 @@ jobs:
           hostname
           whoami
 
+      - name: Check tools
+        run: |
+          docker --version
+          python --version
+          node --version
+          git --version
+
   windows-job:
     runs-on: windows-latest
 
