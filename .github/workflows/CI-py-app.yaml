@@ -19,8 +19,4 @@ jobs:
               run: |
                 python3 test.py
             
-            - name: Cache dependencies
-              uses: actions/cache@v4
-              with:
-                 path: ~/.cache
-                 key: my-cache-${{ runner.os }}
+           
