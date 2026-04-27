@@ -1,0 +1,28 @@
+name: Hosted Runners
+
+on:
+  push:
+
+
+jobs:
+  ubuntu-job:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - run: |
+          echo "OS: ubuntu"
+          hostname
+          whoami
+
+  windows-job:
+    runs-on: windows-latest
+
+    steps:
+
+      - run: |
+          echo "OS: Windows"
+          hostname
+          whoami
+
+          
