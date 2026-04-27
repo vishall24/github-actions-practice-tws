@@ -10,7 +10,7 @@ jobs:
 
         steps:
             - name: Run only on main
-              if: github.ref == 'ref/heads/main'
+              if: github.ref == 'refs/heads/main'
               run: echo "Running step on main branch"
 
             - name: Fail step
