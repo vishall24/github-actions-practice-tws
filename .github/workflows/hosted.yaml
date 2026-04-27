@@ -25,4 +25,12 @@ jobs:
           hostname
           whoami
 
-          
+  mac-job:
+    runs-on: macos-latest
+
+    steps:
+
+      - run: |
+          echo "OS: macos"
+          hostname
+          whoami
