@@ -1,1 +1,1 @@
-# github-actions-practice-tws
+[![Docker CI/CD](https://github.com/vishall24/github-actions-practice-tws/actions/workflows/docker-publish.yaml/badge.svg)](https://github.com/vishall24/github-actions-practice-tws/actions/workflows/docker-publish.yaml)
