@@ -12,3 +12,29 @@ jobs:
       - name: Print PR info
         run: |
           echo "PR check running for branch == ${{ github.head_ref }}"
+
+      - name: Check file size
+        run: |
+          for file in $(find . -type f); do
+            size=$(du -k "$file" | cut -f1)
+            if [ $size -gt 1024 ]; then
+              echo "File $file too large"
+              exit 1
+            fi
+          done
+
+      - name: Check branch name
+        run: |
+          branch="${{ github.head_ref }}"
+          if [[ ! "$branch" =~ ^(feature|fix|docs)/ ]]; then
+            echo "Invalid branch name"
+            exit 1
+          fi
+
+      - name: Check PR body
+        continue-on-error: true
+        run: |
+          if [ -z "${{ github.event.pull_request.body }}" ]; then
+            echo "PR description is empty"
+            exit 1
+          fi
