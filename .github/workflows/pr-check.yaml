@@ -20,6 +20,8 @@ jobs:
             if [ $size -gt 1024 ]; then
               echo "File $file too large"
               exit 1
+            else 
+              echo "less than 1 MB"
             fi
           done
 
@@ -38,3 +40,4 @@ jobs:
             echo "PR description is empty"
             exit 1
           fi
+
