@@ -23,14 +23,15 @@ jobs:
         id: vars
         run: echo "SHA_short=${GITHUB_SHA::7}" >> $GITHUB_ENV
         
-      - name: BUILD image
-        run: |
-          docker build -t ${{ vars.DOCKER_USERNAME }}/my-app:latest .
-          docker build -t ${{ secrets.DOCKER_TOKEN }}/my-app:sha-${SHA_short} .
-
       - name: print username
         run: |
           echo "username: ${{ vars.DOCKER_USERNAME }}"
+        
+      - name: BUILD image
+        run: |
+          docker build -t ${{ vars.DOCKER_USERNAME }}/my-app:latest .
+          docker build -t ${{ vars.DOCKER_USERNAME }}/my-app:sha-${SHA_short} .
+
 
       - name: push image
         run: |
