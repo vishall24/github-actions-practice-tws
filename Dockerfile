@@ -5,9 +5,6 @@ WORKDIR /app
 # Create non-root user
 RUN adduser -D appuser
 
-# Copy only required files from builder
-COPY --from=builder /app /app
-
 # Fix permissions
 RUN chown -R appuser /app
 
