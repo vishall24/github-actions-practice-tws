@@ -43,3 +43,16 @@ jobs:
       - id: set_version
         run: echo "version=v1.0-${GITHUB_SHA::7}" >> $GITHUB_OUTPUT
 
+  test-actions:
+    runs-on: ubuntu-latest
+    
+    steps:
+        
+        - uses: actions/checkout@v4
+
+        - name: Use custom action
+          uses: ./.github/actions/setup-and-greet
+          with:
+            name: Vishal
+            language: en
+
