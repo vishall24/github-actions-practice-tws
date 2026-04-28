@@ -23,15 +23,16 @@ jobs:
         id: vars
         run: echo "SHA_short=${GITHUB_SHA::7}" >> $GITHUB_ENV
         
-      - name: print username
+      - name: Push image
+        if: github.ref == 'refs/heads/main'
         run: |
-          echo "username: ${{ vars.DOCKER_USERNAME }}"
-        
+            docker push ${{ vars.DOCKER_USERNAME }}/my-app:latest
+            docker push ${{ vars.DOCKER_USERNAME }}/my-app:sha-${SHA_SHORT}
+
       - name: BUILD image
         run: |
           docker build -t ${{ vars.DOCKER_USERNAME }}/my-app:latest .
           docker build -t ${{ vars.DOCKER_USERNAME }}/my-app:sha-${SHA_short} .
-
 
       - name: push image
         run: |
