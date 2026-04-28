@@ -32,4 +32,4 @@ jobs:
         if: github.ref == 'refs/heads/main'
         run: |
             docker push ${{ vars.DOCKER_USERNAME }}/my-app:latest
-            docker push ${{ vars.DOCKER_USERNAME }}/my-app:sha-${SHA_SHORT}
+            docker push ${{ vars.DOCKER_USERNAME }}/my-app:sha-${SHA_short}
