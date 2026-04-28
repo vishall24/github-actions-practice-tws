@@ -14,11 +14,16 @@ on:
     secrets:
       docker_token:
         required: true
+    outputs:
+        build_version:
+            value: ${{ jobs.build.outputs.version }}
 
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs: 
+        version: ${{ steps.set_version.outputs.version }}
 
     environment: ${{ inputs.environment }}
 
@@ -34,4 +39,7 @@ jobs:
           if [ -n "${{ secrets.docker_token }}" ]; then
             echo "Docker token is set: true"
           fi
+
+      - id: set_version
+        run: echo "version=v1.0-${GITHUB_SHA::7}" >> $GITHUB_OUTPUT
 
