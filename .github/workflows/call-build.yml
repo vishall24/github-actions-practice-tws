@@ -5,11 +5,10 @@ on:
     branches: [main]
 
 jobs:
-  call-build:
-    uses: ./.github/workflows/reusable-build.yml
-    with:
-        app_name: "my-web-app"
-        environment: "production"
-    secrets:
-        environment: dev
-        docker_token: ${{ secrets.DOCKER_TOKEN }}
+    call-build:
+        uses: ./.github/workflows/reusable-build.yml
+        with:
+            app_name: "my-web-app"
+            environment: "dev"
+        secrets:
+            docker_token: ${{ secrets.DOCKER_TOKEN }}
