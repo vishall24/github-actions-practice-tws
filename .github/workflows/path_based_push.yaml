@@ -1,0 +1,20 @@
+name: Path & branch filter
+
+on:
+  push:
+    branches: [main, feature/*]
+    paths:
+      - 'src/**'
+      - 'app/**'
+
+    paths-ignore:
+        - '*.md'
+        - 'docs/**'
+
+jobs:
+    test-run:
+        runs-on: ubuntu-latest
+        steps:
+            - name: sample text
+              run: |
+                echo "Hello world"
